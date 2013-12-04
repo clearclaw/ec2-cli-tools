@@ -13,18 +13,18 @@ if [ "$1" == "--enable-completion-script" ]; then
   exit
 fi
 
-if [ -z "$AWS_KEY" ]; then
-  echo "No AWS_KEY environment variable, bailing."
+if [ -z "$AWS_ACCESS_KEY" ]; then
+  echo "No AWS_ACCESS_KEY environment variable, bailing."
   exit 2
 fi
 
 if [ "$1" == "--complete" ]; then
-  COMPLETION_MODE=1 
+  COMPLETION_MODE=1
   shift
 fi
 
 REFRESH_EVERY=86400 # 24hours
-CACHE_FILE="/tmp/ec2hostcache.$USER.$AWS_KEY"
+CACHE_FILE="/tmp/ec2hostcache.$USER.$AWS_ACCESS_KEY"
 
 NOW=`date +%s`
 
